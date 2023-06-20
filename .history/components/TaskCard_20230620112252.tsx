@@ -4,7 +4,6 @@ import { TASK_STATUS } from "@prisma/client";
 import { cookies } from "next/headers";
 import Button from "./Button";
 import Card from "./Card";
-import { ReactElement, ReactNode } from "react";
 
 const getData = async () => {
   const user = await getUserFromCookie(cookies())
@@ -33,7 +32,7 @@ interface Task {
 const TaskCard = async ({tasks, title}: {
   tasks : Task[];
   title: string;
-}): Promise<JSX.Element> => {
+}) => {
   const data = tasks || (await getData())
 
   return (

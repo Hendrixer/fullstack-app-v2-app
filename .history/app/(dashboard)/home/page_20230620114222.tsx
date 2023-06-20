@@ -62,7 +62,7 @@ export default async function Page() {
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full">
-            {taskElement}
+            
           </div>
         </div>
       </div>

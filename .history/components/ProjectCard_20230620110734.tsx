@@ -9,7 +9,7 @@ const projectWithTasks = Prisma.validator<Prisma.ProjectArgs>()({
 
 type ProjectWithTasks = Prisma.ProjectGetPayload<typeof projectWithTasks>
 
-const format = (date: Date | string) => new Date(date).toLocaleDateString("en-us", {
+const format = (date) => new Date(date).toLocaleDateString("en-us", {
   weekday: "long",
   year: "numeric",
   month: "short",

@@ -44,7 +44,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
       router.push('/home')
       setFormState(initial)
     } catch(e: any) {
-      console.error(e)
+      console.error(e: any)
     }
   }
 
@@ -126,7 +126,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
               </span>
             </div>
             <div>
-              <Button intent="secondary">
+              <Button type="submit" intent="secondary">
                 {content.buttonText}
               </Button>
             </div>

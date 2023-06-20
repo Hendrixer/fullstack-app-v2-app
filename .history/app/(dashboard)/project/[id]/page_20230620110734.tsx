@@ -3,7 +3,7 @@ import { getUserFromCookie } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { cookies } from "next/headers"
 
-const getData = async (id: string) => {
+const getData = async (id) => {
   const user = await getUserFromCookie(cookies())
 
   const project = await db.project.findFirst({
@@ -19,16 +19,12 @@ const getData = async (id: string) => {
   return project
 }
 
-export default async function ProjectPage({params}: {params: any}) {
-  const project = await getData(params.id);
-  const taskElement = await TaskCard({
-    tasks: [], 
-    title: "tasks"
-  });
+export default async function ProjectPage({params}) {
+  const project = await getData(params.id)
 
   return (
     <div className="h-full overflow-y-auto pr-6 w-1/1">
-      {taskElement}
+      <TaskCard tasks={project.tasks} title={project.name} />
     </div>
   )
 }

@@ -4,8 +4,7 @@ import {NextApiRequest, NextApiResponse} from 'next'
 import {serialize} from 'cookie'
 
 export default async function register(req: NextApiRequest, res: NextApiResponse) {
-  const cookieName = process.env.COOKIE_NAME;
-  if (!cookieName) throw new Error('COOKIE_NAME is not set');
+
 
   if (req.method === 'POST') {
     const user = await db.user.create({
@@ -21,7 +20,7 @@ export default async function register(req: NextApiRequest, res: NextApiResponse
 
     res.setHeader(
       'Set-Cookie', 
-      serialize(cookieName, jwt, {
+      serialize(process.env.COOKIE_NAME, jwt, {
         httpOnly: true,
         path: "/",
         maxAge: 60 * 60 * 24 * 7,

@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import { ReactNode } from "react";
 
-const Card = ({ className, children }: {className: string; children: ReactNode}) => {
+const Card = ({ className, children }) => {
   return (
     <div
       className={clsx(

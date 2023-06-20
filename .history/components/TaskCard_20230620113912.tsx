@@ -33,7 +33,7 @@ interface Task {
 const TaskCard = async ({tasks, title}: {
   tasks : Task[];
   title: string;
-}): Promise<JSX.Element> => {
+}): Promise<ReactElement> => {
   const data = tasks || (await getData())
 
   return (

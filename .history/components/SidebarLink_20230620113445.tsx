@@ -9,7 +9,7 @@ const icons = {Settings, User, Grid, Calendar}
 
 const SidebarLink = ({link}: {
   link: {
-    icon: string;
+    icon: typeof icons;
     link: string;
   };
 }) => {

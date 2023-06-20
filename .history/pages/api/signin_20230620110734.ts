@@ -11,9 +11,6 @@ export default async function signin(req: NextApiRequest, res: NextApiResponse) 
       }
     })
 
-    const cookieName = process.env.COOKIE_NAME;
-    if (!cookieName) throw new Error('COOKIE_NAME is not set');
-
     console.log(req.body.password, user?.password)
     const isUser = await comparePasswords(req.body.password, user?.password)
     
@@ -22,7 +19,7 @@ export default async function signin(req: NextApiRequest, res: NextApiResponse) 
 
       res.setHeader(
         "Set-Cookie",
-        serialize(cookieName, jwt, {
+        serialize(process.env.COOKIE_NAME, jwt, {
           httpOnly: true,
           path: "/",
           maxAge: 60 * 60 * 24 * 7,

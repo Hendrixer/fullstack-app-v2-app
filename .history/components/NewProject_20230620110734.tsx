@@ -14,7 +14,7 @@ const NewProject = () => {
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     await createNewProject(name)
     closeModal()
@@ -33,12 +33,11 @@ const NewProject = () => {
         <h1 className="text-3xl mb-6">New Project</h1>
         <form className="flex items-center" onSubmit={handleSubmit}>
           <Input
-            className="w-full"
             placeholder="project name"
             value={name}
-            onChange={(e:any ) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
-          <Button>Create</Button>
+          <Button type="submit">Create</Button>
         </form>
       </Modal>
     </div>

@@ -1,4 +1,3 @@
-// @ts-ignore no-implicit-any
 export const fetcher = async ({url, method, body, json = true}) => {
   const res = await fetch(url, {
     method,

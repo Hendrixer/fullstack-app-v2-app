@@ -4,7 +4,6 @@ import { TASK_STATUS } from "@prisma/client";
 import { cookies } from "next/headers";
 import Button from "./Button";
 import Card from "./Card";
-import { ReactElement, ReactNode } from "react";
 
 const getData = async () => {
   const user = await getUserFromCookie(cookies())
@@ -25,19 +24,11 @@ const getData = async () => {
   return tasks
 }
 
-interface Task {
-  name: string
-  description: string
-}
-
-const TaskCard = async ({tasks, title}: {
-  tasks : Task[];
-  title: string;
-}): Promise<JSX.Element> => {
+const TaskCard = async ({tasks, title}) => {
   const data = tasks || (await getData())
 
   return (
-  <Card className={''}>
+  <Card>
       <div className="flex justify-between items-center">
         <div>
           <span className="text-3xl text-gray-600">{title}</span>
@@ -51,8 +42,8 @@ const TaskCard = async ({tasks, title}: {
       <div>
         {data && data.length ? (
           <div>
-            {data.map((task, idx: number) => (
-              <div key={idx} className="py-2 ">
+            {data.map((task) => (
+              <div className="py-2 ">
                 <div>
                   <span className="text-gray-800">{task.name}</span>
                 </div>

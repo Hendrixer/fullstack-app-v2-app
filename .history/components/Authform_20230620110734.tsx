@@ -26,11 +26,11 @@ const signinContent = {
 
 const initial = {email: '', password: '', firstName: '', lastName: ''}
 
-const AuthForm = ({mode}: { mode: any; }) => {
+const AuthForm = ({mode}) => {
   const [formState, setFormState] = useState({...initial})
   const router = useRouter()
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
@@ -43,7 +43,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
   
       router.push('/home')
       setFormState(initial)
-    } catch(e: any) {
+    } catch(e) {
       console.error(e)
     }
   }
@@ -51,7 +51,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
   const content = mode === 'register' ? registerContent : signinContent
 
   return (
-    <Card className={''}>
+    <Card>
       <div className="w-full">
         <div className="text-center">
           <h2 className="text-3xl mb-2">{content.header}</h2>
@@ -69,7 +69,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
                   placeholder="First Name"
                   value={formState.firstName}
                   className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
-                  onChange={(e: any) =>
+                  onChange={(e) =>
                     setFormState((s) => ({ ...s, firstName: e.target.value }))
                   }
                 />
@@ -81,7 +81,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
                   placeholder="Last Name"
                   value={formState.lastName}
                   className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
-                  onChange={(e: any) =>
+                  onChange={(e) =>
                     setFormState((s) => ({ ...s, lastName: e.target.value }))
                   }
                 />
@@ -96,7 +96,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
               placeholder="Email"
               value={formState.email}
               className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
-              onChange={(e: any) =>
+              onChange={(e) =>
                 setFormState((s) => ({ ...s, email: e.target.value }))
               }
             />
@@ -109,7 +109,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
               type="password"
               placeholder="Password"
               className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
-              onChange={(e: any) =>
+              onChange={(e) =>
                 setFormState((s) => ({ ...s, password: e.target.value }))
               }
             />
@@ -126,7 +126,7 @@ const AuthForm = ({mode}: { mode: any; }) => {
               </span>
             </div>
             <div>
-              <Button intent="secondary">
+              <Button type="submit" intent="secondary">
                 {content.buttonText}
               </Button>
             </div>
